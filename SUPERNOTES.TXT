@@ -233,13 +233,38 @@ Exercise 1 -
 https://www.devopsschool.com/blog/ansible-adhoc-commands-lab-excercise-part-1/
 Time - 15 mins
 
+Do one task in ONE REMOTE MACHINE
+=========================================
+ansible -h
+---------------
+optional arguments
+Connection Options
+Privilege Escalation Options:
+
+ACS --> ARS
+
+ansible localhost -m apt -a"name=apache2 state=present" -u ubuntu --key-file=remote.pem
+--------------------
+Remote Machines must be following.
+    --------- LIST OF IP ADDRESS-----
+        -LIST---- Directly
+        -LIST----- file
+        -LIST----- directory
+        -LIST----- script
+
+10.4.5.6
+10.4.5.6,10.4.5.7
+10.4.5.6,
 
 
 
+ansible 13.233.147.122, -m apt -a"name=apache2 state=present" -u ubuntu --key-file=remote.pem
 
+LIST CAN BE GROUPED
+        -----> DEFAULT : all, nogroup
+        -----> CUSTOM 
 
-
-
+ansible all 13.233.147.122, -m apt -a"name=apache2 state=present" -u ubuntu --key-file=remote.pem
 
 
 
