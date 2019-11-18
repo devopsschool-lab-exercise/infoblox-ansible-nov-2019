@@ -49,3 +49,25 @@ sudo ansible localhost -m git  -a"repo=https://github.com/scmgalaxy/ansible-role
 sudo ansible localhost -m apt -a"name=wget"
 sudo ansible localhost -m apt -a"name=git"
 sudo ansible localhost -m user -a"name=deploy-user group=deploy"
+
+
+/etc/ansible/ansible.cfg >> host key validation	
+	
+ansible all -i 10.39.18.23 -m apt -apt -a"name=apache2 state=present" -u ubuntu --key-file=remote.pem -b
+
+
+ansible all -i 10.39.18.22, -m apt  -a"name=apache2 state=present" -u pshet -k
+
+sudo ansible all -i 10.39.18.22, -m copy -a"dest=/mnt/home/pshet/ src=/home/pshet/second.html" -u pshet -k -K -b
+
+
+Using file:
+=========
+Format should be ini there is no extension required
+
+
+
+Behaviors parameter >. when all host are having different username and password
+========
+
+
