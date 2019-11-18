@@ -1,0 +1,1 @@
+ ansible all -i 192.168.228.137,  -m group -a "name=deploy state=present system=yes"  -u vaish -b  -K
