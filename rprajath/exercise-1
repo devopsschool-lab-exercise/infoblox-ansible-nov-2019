@@ -416,6 +416,126 @@ pshet@pshet-virtual-machine:~/ANSIBLE_Rajath$
 pshet@pshet-virtual-machine:~/ANSIBLE_Rajath$ 
 pshet@pshet-virtual-machine:~/ANSIBLE_Rajath$ 
 pshet@pshet-virtual-machine:~/ANSIBLE_Rajath$ 
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# sudo ansible all -i 10.39.18.22 -m apt -a"name=apache2 state=present" -u ubuntu -k
+SSH password: 
+[WARNING]: Unable to parse /mnt/home/rpatavardhan/10.39.18.22 as an inventory source
+
+[WARNING]: No inventory was parsed, only implicit localhost is available
+
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# sudo ansible all -i 10.39.18.22, -m apt -a"name=apache2 state=present" -u ubuntu -k
+SSH password: 
+10.39.18.22 | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Invalid/incorrect password: Permission denied, please try again.",
+    "unreachable": true
+}
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# sudo ansible all -i 10.39.18.22, -m apt -a"name=apache2 state=present" -u pshet -k
+SSH password: 
+[WARNING]: Could not find aptitude. Using apt-get instead
+
+[DEPRECATION WARNING]: Distribution Ubuntu 18.04 on host 10.39.18.22 should use /usr/bin/python3, but is using /usr/bin/python for backward compatibility with prior Ansible releases. A 
+future Ansible release will default to using the discovered platform python for this host. See https://docs.ansible.com/ansible/2.8/reference_appendices/interpreter_discovery.html for 
+more information. This feature will be removed in version 2.12. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+10.39.18.22 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "cache_update_time": 1574063933,
+    "cache_updated": false,
+    "changed": false
+}
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# sudo ansible all -i 10.39.18.22, -u pshet -k -m group -a"name=deploy"
+SSH password: 
+[DEPRECATION WARNING]: Distribution Ubuntu 18.04 on host 10.39.18.22 should use /usr/bin/python3, but is using /usr/bin/python for backward compatibility with prior Ansible releases. A 
+future Ansible release will default to using the discovered platform python for this host. See https://docs.ansible.com/ansible/2.8/reference_appendices/interpreter_discovery.html for 
+more information. This feature will be removed in version 2.12. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+10.39.18.22 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "gid": 1001,
+    "name": "deploy",
+    "state": "present",
+    "system": false
+}
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# sudo ansible all -i 10.39.18.22, -u pshet -k -m user -a"name=deploy-user group=deploy"
+SSH password: 
+[DEPRECATION WARNING]: Distribution Ubuntu 18.04 on host 10.39.18.22 should use /usr/bin/python3, but is using /usr/bin/python for backward compatibility with prior Ansible releases. A 
+future Ansible release will default to using the discovered platform python for this host. See https://docs.ansible.com/ansible/2.8/reference_appendices/interpreter_discovery.html for 
+more information. This feature will be removed in version 2.12. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+10.39.18.22 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "append": false,
+    "changed": false,
+    "comment": "",
+    "group": 1001,
+    "home": "/home/deploy-user",
+    "move_home": false,
+    "name": "deploy-user",
+    "shell": "/bin/sh",
+    "state": "present",
+    "uid": 1001
+}
+[root@rpatavardhan-fc29 rpatavardhan]# sudo ansible all -i 10.39.18.22, -u pshet -k -m apt -a"name=httpd state=present"
+SSH password: 
+[WARNING]: Could not find aptitude. Using apt-get instead
+
+[DEPRECATION WARNING]: Distribution Ubuntu 18.04 on host 10.39.18.22 should use /usr/bin/python3, but is using /usr/bin/python for backward compatibility with prior Ansible releases. A 
+future Ansible release will default to using the discovered platform python for this host. See https://docs.ansible.com/ansible/2.8/reference_appendices/interpreter_discovery.html for 
+more information. This feature will be removed in version 2.12. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+10.39.18.22 | FAILED! => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "cache_update_time": 1574063933,
+    "cache_updated": false,
+    "changed": false,
+    "msg": "'/usr/bin/apt-get -y -o \"Dpkg::Options::=--force-confdef\" -o \"Dpkg::Options::=--force-confold\"      install 'httpd'' failed: E: Could not open lock file /var/lib/dpkg/lock-frontend - open (13: Permission denied)\nE: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), are you root?\n",
+    "rc": 100,
+    "stderr": "E: Could not open lock file /var/lib/dpkg/lock-frontend - open (13: Permission denied)\nE: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), are you root?\n",
+    "stderr_lines": [
+        "E: Could not open lock file /var/lib/dpkg/lock-frontend - open (13: Permission denied)",
+        "E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), are you root?"
+    ],
+    "stdout": "",
+    "stdout_lines": []
+}
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# sudo ansible all -i 10.39.18.22, -u pshet -k -m apt -a"name=apache2 state=present"
+SSH password: 
+[WARNING]: Could not find aptitude. Using apt-get instead
+
+[DEPRECATION WARNING]: Distribution Ubuntu 18.04 on host 10.39.18.22 should use /usr/bin/python3, but is using /usr/bin/python for backward compatibility with prior Ansible releases. A 
+future Ansible release will default to using the discovered platform python for this host. See https://docs.ansible.com/ansible/2.8/reference_appendices/interpreter_discovery.html for 
+more information. This feature will be removed in version 2.12. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+10.39.18.22 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "cache_update_time": 1574063933,
+    "cache_updated": false,
+    "changed": false
+}
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# 
+
 
 ==========================HISTORY========================
 
