@@ -1,1 +1,13 @@
 
+Program 9:
+    ansible all -i 172.31.44.172, -m apt -a"name=apache2 state=present" -u ubuntu --key-file=rajath.pem -b
+    
+Program 10: Create a file inventory (in INI format):
+    file example: Filename: inventory
+                  contents: [web]
+                            172.31.44.172
+                            [db]
+                            172.31.44.173
+                            172.31.44.174
+    ansible web -i inventory -m apt -a"name=apache2 state=present" -u ubuntu --key-file=rajath.pem -b
+    
