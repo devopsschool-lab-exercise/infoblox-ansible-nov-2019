@@ -267,6 +267,20 @@ LIST CAN BE GROUPED
 ansible all 13.233.147.122, -m apt -a"name=apache2 state=present" -u ubuntu --key-file=remote.pem
 
 
+  53  ansible 13.233.147.122, -m apt -a"name=apache2 state=present" -u ubuntu --key-file=remote.pem
+   54  ansible all 13.233.147.122, -m apt -a"name=apache2 state=present" -u ubuntu --key-file=remote.pem
+   55  ansible -h
+   56  ansible all -i 13.233.147.122, -m apt -a"name=apache2 state=present" -u ubuntu --key-file=remote.pem
+   57  vi /etc/ansible/ansible.cfg
+   58  ansible all -i 13.233.147.122, -m apt -a"name=apache2 state=present" -u ubuntu --key-file=remote.pem
+   59  clear
+   60  vi remote.pem
+   61  ansible all -i 13.233.147.122, -m apt -a"name=apache2 state=present" -u ubuntu --key-file=remote.pem
+   62  chmod 600 remote.pem
+   63  ansible all -i 13.233.147.122, -m apt -a"name=apache2 state=present" -u ubuntu --key-file=remote.pem
+   64  ansible -h
+   65  ansible all -i 13.233.147.122, -m apt -a"name=apache2 state=present" -u ubuntu --key-file=remote.pem -b
+   66  ansible all -i 13.233.147.122, -m apt -a"name=apache2 state=present" -u ubuntu --key-file=remote.pem -bhistory
 
 
 
