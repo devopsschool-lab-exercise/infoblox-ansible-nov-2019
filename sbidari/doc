@@ -18,7 +18,8 @@ sudo ansible localhost -m file -a "path=/home/som/Desktop/Ansible/test.txt state
 
 
 
-
+cd /bin/bash
+vim test.sh
 !#/bin/bash
 sudo ansible localhost -m group -a "name=deploy state=present"
 sudo ansible localhost -m user -a "name=deploy-user group=deploy state=present"
