@@ -284,8 +284,20 @@ ansible all 13.233.147.122, -m apt -a"name=apache2 state=present" -u ubuntu --ke
 
 
 
+ansible all -i 13.233.147.122,13.233.147.122,13.233.147.122,13.233.147.122,13.233.147.122,13.233.147.122,13.233.147.122,13.233.147.122,13.233.147.122,13.233.147.122,13.233.147.122,13.233.147.122,13.233.147.122,13.233.147.122, -m apt -a"name=apache2 state=present" -u ubuntu --key-file=remote.pem
 
+ansible all -i inventory -m apt -a"name=apache2 state=present" -u ubuntu --key-file=remote.pem
 
+[web]
+13.233.147.122
+
+[db]
+13.233.147.123
+13.233.147.124
+13.233.147.125
+13.233.147.126
+
+ansible web -i inventory -m apt -a"name=apache2 state=present" -u ubuntu --key-file=remote.pem
 
     
 
