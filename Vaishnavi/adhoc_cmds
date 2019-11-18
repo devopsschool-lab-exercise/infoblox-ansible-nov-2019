@@ -1,0 +1,8 @@
+src - https://www.devopsschool.com/blog/ansible-adhoc-commands-lab-excercise-part-1/
+
+program - 1
+ ansible localhost -m group -a "name=deploy state=present system=yes"
+
+program -2
+ ansible localhost -m user -a "name=deploy-user group=deploy"
+
