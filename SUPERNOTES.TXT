@@ -160,6 +160,7 @@ Ansible -> .yaml(playbook) -----> roles --ADMIN --> SERVERS
 Ansible Control SERVER
 ----------------------------------------------
         Ansible -  A Software
+            -------------- Modules
         Ansible Config 
         Inventory
         Playbook
@@ -180,19 +181,57 @@ How to install ANsible in Ubuntu?
     9  ansible --version
 
 
+Task - 10 mins....
+RUN ONE VM ONLY
+Install Ansible 
+
+http://bit.ly/37h91g4
+==========================================
+FLOW OF THE TRAINING
+=============================================
+	using ADHOC command 
+		Do one task in ONE MACHINE(localhost)
+		Do one task in ONE REMOTE MACHINE
+		Do one task in MULTIPLE REMOTE MACHINES using Inventory
+		Do one task in MULTIPLE REMOTE MACHINES using group in Inventory
+	using Playbook(Program)
+		Do Multiple tasks(Playbook) in ONE MACHINE(localhost)
+		Do Multiple tasks(Playbook) in ONE REMOTE MACHINE
+		Do Multiple tasks(Playbook) in MULTIPLE REMOTE MACHINE using Inventory
+		Do Multiple tasks(Playbook) in MULTIPLE REMOTE MACHINE using group in Inventory
+		Do Multiple tasks(Playbook) in MULTIPLE REMOTE MACHINE using group of group in Inventory
+		Do Multiple tasks(Playbook) in MULTIPLE REMOTE MACHINE using environment directory Inventory 
+	using Role(Program)
+		Do One Role in in ONE MACHINE(localhost)
+		Do Multiple Roles in ONE REMOTE MACHINE
+		Do Multiple Roles in MULTIPLE REMOTE MACHINE using Inventory
+		Do Multiple Roles in MULTIPLE REMOTE MACHINE using group in Inventory
+		Do Multiple Roles in MULTIPLE REMOTE MACHINE using group of group in Inventory
+		Do Multiple Roles in MULTIPLE REMOTE MACHINE using environment directory Inventory
 
 
-
-
-
-
+using ADHOC command 
+		Do one task in ONE MACHINE(localhost)
+========================================================
+Project ----> Setup a webserver.
+psucode --->
+Step1 - Install apache2 in ubuntu - apt
+Step2 - Create a file index.html - file - blockinfile - lineinfile
+Step2 - Start a apache2 service. - service
+=========================================
+"ansible module for"
+====================================
+https://docs.ansible.com/ansible/latest/modules/modules_by_category.html
     
-    
+ansible localhost -m apt -a"name=apache2 state=present"
+ansible localhost -m copy -a"dest=/var/www/html src=/home/ubuntu/index.html"
+ansible localhost -m service -a"name=apache2 state=started"
+ansible localhost -m file -a"path=/var/www/html/index.html mode=755"
 
 
-
-
-
+Exercise 1 - 
+https://www.devopsschool.com/blog/ansible-adhoc-commands-lab-excercise-part-1/
+Time - 15 mins
 
 
 
