@@ -1,0 +1,51 @@
+  106  sudo ansible localhost -m win_group -a"name=deploy"
+  107  sudo ansible localhost -m group -a"name=deploy"
+  108  cd /bin/bash
+  109  sudo ansible localhost -m user -a"name=deploy-user group=deploy"
+  110  more /etc/passwd | grep deploy-user
+  111  sudo ansible localhost -m user -a"name=deploy-user group=deploy path=/etc/passwd"
+  112  more /etc/passwd | grep deploy-user
+  113  sudo ansible localhost -m user -a"name=deploy-user group=deploy shell=/bin/bash"
+  114  more /etc/passwd | grep deploy-user
+  115  sudo ansible localhost -m user -a"name=deploy-user group=deploy shell=/bin/bash/"
+  116  more /etc/passwd | grep deploy-user
+  117  sudo ansible localhost -m user -a"name=deploy-user group=deploy authorization="
+  118  more /etc/passwd | grep deploy-user
+  119  sudo ansible localhost -m user -a"name=deploy-user group=deploy shell='/bin/bash/'"
+  120  more /etc/passwd | grep deploy-user
+  121  cd
+  122  vi second.html
+  123  sudo ansible localhost -m copy -a"dest=/var/www/html src=/home/pshet/second.html"
+  124  sudo ansible localhost -m apt -a"name=wget"
+  125  sudo ansible localhost -m apt -a"name=git"
+  126  sudo ansible localhost -m git  -a"repo=https://github.com/scmgalaxy/ansible-role-template dest=yes"
+  127  ls
+  128  cd yes/
+  129  ls
+  130  c d..
+  131  cd
+  132  sudo ansible localhost -m reboot -a"msg="rebboted succesfully"
+  133  sudo ansible localhost -m reboot -a"msg=rebboted succesfully"
+  134  sudo ansible localhost -m reboot -a"msg=rebbotedsuccesfully"
+  135  sudo ansible localhost -m file  -a"name="second.html path=/var/www/html state=touch"
+  136  sudo ansible localhost -m file  -a"name=second.html path=/var/www/html state=touch"
+  137  sudo ansible localhost -m file  -a"path=/var/www/html state=touch"
+  138  more /etc/passwd | grep deploy-user
+  139  more /etc/passwd | grep "deploy"
+  140  more /etc/passwd | grep "group=*"
+  141  more /etc/passwd | grep "groups=*"
+  142  more /etc/passwd | grep "user=deploy-user"
+  143  history
+pshet@pshet-virtual-machine:~$
+
+
+
+
+summary:
+======
+sudo ansible localhost -m file  -a"path=/var/www/html state=touch"
+sudo ansible localhost -m reboot -a"msg=rebboted succesfully"
+sudo ansible localhost -m git  -a"repo=https://github.com/scmgalaxy/ansible-role-template dest=yes"
+sudo ansible localhost -m apt -a"name=wget"
+sudo ansible localhost -m apt -a"name=git"
+sudo ansible localhost -m user -a"name=deploy-user group=deploy"
