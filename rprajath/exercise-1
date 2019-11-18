@@ -46,25 +46,41 @@ pshet@pshet-virtual-machine:~/ANSIBLE_Rajath$
 pshet@pshet-virtual-machine:~/ANSIBLE_Rajath$ 
 pshet@pshet-virtual-machine:~/ANSIBLE_Rajath$ 
 pshet@pshet-virtual-machine:~/ANSIBLE_Rajath$ 
-pshet@pshet-virtual-machine:~/ANSIBLE_Rajath$ sudo ansible localhost -m user -a"name=deploy-user group=deploy"
-localhost | SUCCESS => {
-    "append": false, 
+pshet@pshet-virtual-machine:~/ANSIBLE_Rajath$ sudo ansible localhost -m apt -a"pkg=httpd state=present"
+
+localhost | FAILED! => {
+    "cache_update_time": 1574063933, 
+    "cache_updated": false, 
     "changed": false, 
-    "comment": "", 
-    "group": 1001, 
-    "home": "/home/deploy-user", 
-    "move_home": false, 
-    "name": "deploy-user", 
-    "shell": "/bin/sh", 
-    "state": "present", 
-    "uid": 1001
+    "msg": "'/usr/bin/apt-get -y -o \"Dpkg::Options::=--force-confdef\" -o \"Dpkg::Options::=--force-confold\"      install 'httpd'' failed: E: Package 'httpd' has no installation candidate\n", 
+    "rc": 100, 
+    "stderr": "E: Package 'httpd' has no installation candidate\n", 
+    "stderr_lines": [
+        "E: Package 'httpd' has no installation candidate"
+    ], 
+    "stdout": "Reading package lists...\nBuilding dependency tree...\nReading state information...\nPackage httpd is a virtual package provided by:\n  nginx-light 1.14.0-0ubuntu1.6\n  nginx-full 1.14.0-0ubuntu1.6\n  nginx-extras 1.14.0-0ubuntu1.6\n  lighttpd 1.4.45-1ubuntu3.18.04\n  nginx-core 1.14.0-0ubuntu1.6\n  apache2 2.4.29-1ubuntu4.11\n  yaws 2.0.4+dfsg-2\n  webfs 1.21+ds1-12\n  tntnet 2.2.1-3build1\n  mini-httpd 1.23-1.2build1\n  micro-httpd 20051212-15.1\n  ebhttpd 1:1.0.dfsg.1-4.3build1\n  aolserver4-daemon 4.5.1-18.1\n  aolserver4-core 4.5.1-18.1\n\n", 
+    "stdout_lines": [
+        "Reading package lists...", 
+        "Building dependency tree...", 
+        "Reading state information...", 
+        "Package httpd is a virtual package provided by:", 
+        "  nginx-light 1.14.0-0ubuntu1.6", 
+        "  nginx-full 1.14.0-0ubuntu1.6", 
+        "  nginx-extras 1.14.0-0ubuntu1.6", 
+        "  lighttpd 1.4.45-1ubuntu3.18.04", 
+        "  nginx-core 1.14.0-0ubuntu1.6", 
+        "  apache2 2.4.29-1ubuntu4.11", 
+        "  yaws 2.0.4+dfsg-2", 
+        "  webfs 1.21+ds1-12", 
+        "  tntnet 2.2.1-3build1", 
+        "  mini-httpd 1.23-1.2build1", 
+        "  micro-httpd 20051212-15.1", 
+        "  ebhttpd 1:1.0.dfsg.1-4.3build1", 
+        "  aolserver4-daemon 4.5.1-18.1", 
+        "  aolserver4-core 4.5.1-18.1", 
+        ""
+    ]
 }
-pshet@pshet-virtual-machine:~/ANSIBLE_Rajath$ 
-pshet@pshet-virtual-machine:~/ANSIBLE_Rajath$ 
-pshet@pshet-virtual-machine:~/ANSIBLE_Rajath$ 
-pshet@pshet-virtual-machine:~/ANSIBLE_Rajath$ 
-pshet@pshet-virtual-machine:~/ANSIBLE_Rajath$ 
-pshet@pshet-virtual-machine:~/ANSIBLE_Rajath$ 
 pshet@pshet-virtual-machine:~/ANSIBLE_Rajath$ 
 pshet@pshet-virtual-machine:~/ANSIBLE_Rajath$ 
 pshet@pshet-virtual-machine:~/ANSIBLE_Rajath$ sudo ansible localhost -m apt -a"pkg=apache2 state=present"
@@ -350,39 +366,6 @@ ansible: error: too few arguments
 pshet@pshet-virtual-machine:~/ANSIBLE_Rajath$ 
 pshet@pshet-virtual-machine:~/ANSIBLE_Rajath$ 
 pshet@pshet-virtual-machine:~/ANSIBLE_Rajath$ sudo ansible -m git -a "repo=https://github.com/scmgalaxy/ansible-role-template dest=/home/pshet/clone_git"
-usage: ansible [-h] [--version] [-v] [-b] [--become-method BECOME_METHOD]
-               [--become-user BECOME_USER] [-K] [-i INVENTORY] [--list-hosts]
-               [-l SUBSET] [-P POLL_INTERVAL] [-B SECONDS] [-o] [-t TREE] [-k]
-               [--private-key PRIVATE_KEY_FILE] [-u REMOTE_USER]
-               [-c CONNECTION] [-T TIMEOUT]
-               [--ssh-common-args SSH_COMMON_ARGS]
-               [--sftp-extra-args SFTP_EXTRA_ARGS]
-               [--scp-extra-args SCP_EXTRA_ARGS]
-               [--ssh-extra-args SSH_EXTRA_ARGS] [-C] [--syntax-check] [-D]
-               [-e EXTRA_VARS] [--vault-id VAULT_IDS]
-               [--ask-vault-pass | --vault-password-file VAULT_PASSWORD_FILES]
-               [-f FORKS] [-M MODULE_PATH] [--playbook-dir BASEDIR]
-               [-a MODULE_ARGS] [-m MODULE_NAME]
-               pattern
-ansible: error: too few arguments
-pshet@pshet-virtual-machine:~/ANSIBLE_Rajath$ sudo ansible -m git -a "repo=https://github.com/scmgalaxy/ansible-role-template dest=clone_git"
-usage: ansible [-h] [--version] [-v] [-b] [--become-method BECOME_METHOD]
-               [--become-user BECOME_USER] [-K] [-i INVENTORY] [--list-hosts]
-               [-l SUBSET] [-P POLL_INTERVAL] [-B SECONDS] [-o] [-t TREE] [-k]
-               [--private-key PRIVATE_KEY_FILE] [-u REMOTE_USER]
-               [-c CONNECTION] [-T TIMEOUT]
-               [--ssh-common-args SSH_COMMON_ARGS]
-               [--sftp-extra-args SFTP_EXTRA_ARGS]
-               [--scp-extra-args SCP_EXTRA_ARGS]
-               [--ssh-extra-args SSH_EXTRA_ARGS] [-C] [--syntax-check] [-D]
-               [-e EXTRA_VARS] [--vault-id VAULT_IDS]
-               [--ask-vault-pass | --vault-password-file VAULT_PASSWORD_FILES]
-               [-f FORKS] [-M MODULE_PATH] [--playbook-dir BASEDIR]
-               [-a MODULE_ARGS] [-m MODULE_NAME]
-               pattern
-ansible: error: too few arguments
-pshet@pshet-virtual-machine:~/ANSIBLE_Rajath$ 
-pshet@pshet-virtual-machine:~/ANSIBLE_Rajath$ sudo ansible -m git -a"repo=https://github.com/scmgalaxy/ansible-role-template dest=pop"
 usage: ansible [-h] [--version] [-v] [-b] [--become-method BECOME_METHOD]
                [--become-user BECOME_USER] [-K] [-i INVENTORY] [--list-hosts]
                [-l SUBSET] [-P POLL_INTERVAL] [-B SECONDS] [-o] [-t TREE] [-k]
