@@ -567,3 +567,146 @@ more information. This feature will be removed in version 2.12. Deprecation warn
  2054  sudo ansible localhost -m git -a"repo=https://github.com/scmgalaxy/ansible-role-template dest=git_clone"
  2055  sudo ansible localhost -m reboot -a"msg=Rebooting..."
  2056  sudo ansible localhost -m file -a"name=devopsschool.txt path=/var/www/html state=touch"
+ 
+ 
+ 
+ 
+ [root@rpatavardhan-fc29 rpatavardhan]# vi inventory
+[root@rpatavardhan-fc29 rpatavardhan]# sudo ansible web -i inventory -m apt -a"name=apache2 state=present" -u pshet -k
+SSH password: 
+10.39.18.23 | FAILED! => {
+    "msg": "Using a SSH password instead of a key is not possible because Host Key checking is enabled and sshpass does not support this.  Please add this host's fingerprint to your known_hosts file to manage this host."
+}
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# sudo ansible web -i inventory -m apt -a"name=apache2 state=present" -u pshet -K
+BECOME password: 
+The authenticity of host '10.39.18.23 (10.39.18.23)' can't be established.
+ECDSA key fingerprint is SHA256:YyTu5cIU4UzK8uty+1rzfXVA9X4WPdVb9izUL5tDBG0.
+Are you sure you want to continue connecting (yes/no)? yes
+10.39.18.23 | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: Warning: Permanently added '10.39.18.23' (ECDSA) to the list of known hosts.\r\npshet@10.39.18.23: Permission denied (publickey,password).",
+    "unreachable": true
+}
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# sudo ansible web -i inventory -m apt -a"name=apache2 state=present" -u pshet -K
+BECOME password: 
+10.39.18.23 | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: pshet@10.39.18.23: Permission denied (publickey,password).",
+    "unreachable": true
+}
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# sudo ansible web -i inventory -m apt -a"name=apache2 state=present" -u pshet -k
+SSH password: 
+[WARNING]: Could not find aptitude. Using apt-get instead
+
+[DEPRECATION WARNING]: Distribution Ubuntu 16.04 on host 10.39.18.23 should use /usr/bin/python3, but is using /usr/bin/python for backward compatibility with prior Ansible releases. A 
+future Ansible release will default to using the discovered platform python for this host. See https://docs.ansible.com/ansible/2.8/reference_appendices/interpreter_discovery.html for 
+more information. This feature will be removed in version 2.12. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+10.39.18.23 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "cache_update_time": 1574060663,
+    "cache_updated": false,
+    "changed": false
+}
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# sudo ansible -m git -a "repo=https://github.com/scmgalaxy/ansible-role-template dest=^C
+[root@rpatavardhan-fc29 rpatavardhan]# sudo ansible web -i inventory -m git -a "repo=https://github.com/scmgalaxy/ansible-role-template dest=
+> ^C
+[root@rpatavardhan-fc29 rpatavardhan]# sudo ansible web -i inventory -m git -a "repo=https://github.com/scmgalaxy/ansible-role-template dest=/home/pshet/test" -u pshet -k
+SSH password: 
+[DEPRECATION WARNING]: Distribution Ubuntu 16.04 on host 10.39.18.23 should use /usr/bin/python3, but is using /usr/bin/python for backward compatibility with prior Ansible releases. A 
+future Ansible release will default to using the discovered platform python for this host. See https://docs.ansible.com/ansible/2.8/reference_appendices/interpreter_discovery.html for 
+more information. This feature will be removed in version 2.12. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+10.39.18.23 | CHANGED => {
+    "after": "d3eefe03c1bb6c9b0e1574347523174a26d015ff",
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "before": null,
+    "changed": true
+}
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# sudo ansible web -i inventory -m apt -a"name=wget state=present" -u pshet -k
+SSH password: 
+[WARNING]: Could not find aptitude. Using apt-get instead
+
+[DEPRECATION WARNING]: Distribution Ubuntu 16.04 on host 10.39.18.23 should use /usr/bin/python3, but is using /usr/bin/python for backward compatibility with prior Ansible releases. A 
+future Ansible release will default to using the discovered platform python for this host. See https://docs.ansible.com/ansible/2.8/reference_appendices/interpreter_discovery.html for 
+more information. This feature will be removed in version 2.12. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+10.39.18.23 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "cache_update_time": 1574060663,
+    "cache_updated": false,
+    "changed": false
+}
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# sudo ansible web -i inventory -u pshet -k -m copy -a"dest=/var/www/html src=/home/pshet/ANSIBLE_Rajath/test.html"^C
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# ls
+'=10.0.0.1'   clear_admin_password.py   inventory     opt   report   RFE-9231       Shell_Training   Templates   test.py    update_cluster_properties.pl   WAPI
+'=1234:4'     IB                        mkbranch.sh   p4    resmgr   rprajath.txt   singhr.txt       test.html   training   Videos
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# sudo ansible web -i inventory -u pshet -k -m copy -a"dest=/var/www/html src=/mnt/home/rpatavardhan/test.py"
+SSH password: 
+[DEPRECATION WARNING]: Distribution Ubuntu 16.04 on host 10.39.18.23 should use /usr/bin/python3, but is using /usr/bin/python for backward compatibility with prior Ansible releases. A 
+future Ansible release will default to using the discovered platform python for this host. See https://docs.ansible.com/ansible/2.8/reference_appendices/interpreter_discovery.html for 
+more information. This feature will be removed in version 2.12. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+10.39.18.23 | FAILED! => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "checksum": "172b427d53d1ee08fe2cc2d8db18d2733e0b317c",
+    "msg": "Destination /var/www/html not writable"
+}
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# 
+[root@rpatavardhan-fc29 rpatavardhan]# sudo ansible web -i inventory -u pshet -k -m copy -a"dest=//home/pshet/ src=/mnt/home/rpatavardhan/test.py"
+SSH password: 
+[DEPRECATION WARNING]: Distribution Ubuntu 16.04 on host 10.39.18.23 should use /usr/bin/python3, but is using /usr/bin/python for backward compatibility with prior Ansible releases. A 
+future Ansible release will default to using the discovered platform python for this host. See https://docs.ansible.com/ansible/2.8/reference_appendices/interpreter_discovery.html for 
+more information. This feature will be removed in version 2.12. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+10.39.18.23 | CHANGED => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": true,
+    "checksum": "172b427d53d1ee08fe2cc2d8db18d2733e0b317c",
+    "dest": "//home/pshet/test.py",
+    "gid": 1000,
+    "group": "pshet",
+    "md5sum": "2d9165d92df48a4e7ccea8abbe199d34",
+    "mode": "0664",
+    "owner": "pshet",
+    "size": 556,
+    "src": "/home/pshet/.ansible/tmp/ansible-tmp-1574074653.6355453-269974555673329/source",
+    "state": "file",
+    "uid": 1000
+}
+[root@rpatavardhan-fc29 rpatavardhan]# 
+
