@@ -1,1 +1,86 @@
-Hello
+Program 1 – Write a Ansible Adhoc Commands to create a group called “deploy
+Answer - 
+             ansible localhost -m group -a"name=deploy state=present"
+             
+             $ more /etc/group | grep deploy
+             deploy:x:1001:
+
+Program 2 – Write a Ansible Adhoc Commands to create a user called “deploy-user” which is part of group called “deploy” and with /bin/bash shell.
+Answer - 
+            ansible localhost -m user -a"name=deploy-user group=deploy state=present"
+            
+            $ more /etc/passwd | grep deploy-user
+            deploy-user:x:1001:1001::/home/deploy-user:
+            
+Program 3 – Write a Ansible Adhoc commands install package named “httpd” in RHEL/centos.
+Answer -    
+            ansible localhost -m package -a"name=apache2 state=present"
+            
+            $ which apache2
+            /usr/sbin/apache2
+
+
+Program 4 – Write a Ansible Adhoc commands to start and enable the service named “httpd”
+Answer - 
+
+           ansible localhost -m package -a"name=apache2 state=present"
+            
+            $ ps -eaf | grep httpd
+            node2    13007 22629  0 00:30 pts/0    00:00:00 grep --color=auto httpd
+
+               
+       
+Program 5 – Write a Ansible commands to create a file called “index.html” in /var/www/html with some dummy html contents.
+Answer - 
+            
+            
+
+Program 6 – Write a Ansible commands to copy a file called “second.html” in /var/www/html/second.html with some dummy html contents.
+Answer - 
+
+ 
+ 
+ Program 7 – Write a Ansible commands to install a package called “git”, “wget”.
+ Answer - 
+              ansible localhost -m package -a"name=git state=present"
+              ansible localhost -m package -a"name=wget state=present"
+              
+              $ which git
+              /usr/bin/git
+              
+              $ which wget
+              /usr/bin/wget
+              
+              
+Program 8 – Write a Ansible Adhoc commands to clone git repo. https://github.com/scmgalaxy/ansible-role-template.
+Answer - 
+           ansible localhost -m git -a"repo=https://github.com/scmgalaxy/ansible-role-template dest=/home/node2/test"
+           
+           $ ls
+           bennojoy.mysql  inventory  node.pem  rajesh.role1  README.md  site.retry  site.yaml
+           
+           
+ Program 9 – Write a Ansible commands to reboot a self machine.
+ Answer - 
+ 
+ 
+ Program 10 – Write a Ansible commands to touch a file called “devopsschool.txt” in /opt/ and delete after using ansible adhoc command.
+ Answer - 
+            
+ 
+ 
+ 
+
+
+              
+              
+              
+              
+              
+              
+ 
+ 
+ 
+
+
+
