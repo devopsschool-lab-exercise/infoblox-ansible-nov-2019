@@ -28,3 +28,14 @@ playbook3-
     file:
       path: "/var/www/html/index.html"
       state: touch
+
+
+
+master_playbook.yml
+---
+
+
+   - name: this is a master file calling other yaml files
+     include: playbook1.yml
+     include: playbook2.yml
+     include: playbook3.yml
