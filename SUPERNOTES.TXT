@@ -297,8 +297,46 @@ ansible all -i inventory -m apt -a"name=apache2 state=present" -u ubuntu --key-f
 13.233.147.125
 13.233.147.126
 
-ansible web -i inventory -m apt -a"name=apache2 state=present" -u ubuntu --key-file=remote.pem
+ansible web -i inventory -m apt -a"name=apache2 state=present" -u ubuntu --key-file=remote.pem -b
 
-    
+==============================================================
+How to pass 
+        Options
+        Connections Options
+        Escalation 
+to the inventory if its different.
 
+Solution - Ansible BEHAVIOURAL PARAM.
+https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html#connecting-to-hosts-behavioral-inventory-parameters
+
+IP - 13.233.7.77
+
+
+
+
+[ubuntu]
+13.233.7.77 
+13.232.89.26
+
+[rhel]
+13.235.75.168 ansible_user=ec2-user ansible_ssh_private_key_file=rhel.pem ansible_become=yes
+
+[db]
+13.233.147.123  
+13.233.147.124 
+13.233.147.125 
+13.233.147.126 ansible_password=dsadad ansible_port=34 ansible_user=ubuntu
+
+[ubuntu:vars]
+ansible_user=ubuntu
+ansible_ssh_private_key_file=ubunutu.pem
+ansible_become=yes
+
+ansible all -i inventory -m apt -a"name=apache2 state=present" 
+
+ 
+ansible ubuntu -i inventory -m apt -a"name=* state=latest" 
+ansible ubuntu -i inventory -m apt -a"name=apache2 state=present" 
+
+ansible all -i inventory -m yum -a"name=httpd state=present" -u ec2-user --key-file=rhel.pem -b
 
