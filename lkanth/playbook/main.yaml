@@ -1,0 +1,4 @@
+ - name: Main to call tasks Create
+   hosts: node1
+   tasks:
+     - include: task.yaml
