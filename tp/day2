@@ -1,0 +1,23 @@
+Playbook 1
+---
+- name: Exercise 2 Problem 3 and 4
+  hosts: ubuntu
+  tasks:
+  - name: Install package named apache2
+    package: name=apache2 state=present
+  - name: Start and enable the service named apache2
+    service: name=apache2 state=started
+...
+
+Playbook 2
+---
+- name: Exercise 2 Problem 3 and 4
+  hosts: ubuntu
+  tasks:
+  - name: Install package named apache2
+    package: name=apache2 state=present
+  - name: Start and enable the service named apache2
+    service: name=apache2 state=started
+...
+
+
