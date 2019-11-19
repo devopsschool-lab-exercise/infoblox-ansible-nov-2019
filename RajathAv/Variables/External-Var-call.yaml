@@ -1,0 +1,24 @@
+---
+- name: This sets up an httpd webserver
+  hosts: ubuntu
+  vars:
+    myname: "RajathAv in playbook"
+    package: "apache2"
+    service: "apache2"
+  vars_files:
+    - "var2.yaml"
+
+  tasks:
+  - name: Update all packages to the latest version
+    apt: upgrade=dist
+  - name: Install the httpd apps
+    apt: name={{package}}
+  - name: start the httpd service
+    service: name={{service}} state=started
+  - name: create a empty fle
+    file: dest=/opt/test.txt state=touch
+  - name: copy a file
+    copy: dest=/var/www/html/ src="/home/ubuntu/index.html"
+  - debug:
+      msg: "My Name is {{myname}}"
+...
