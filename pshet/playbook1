@@ -4,8 +4,4 @@
   - name: copy the destination path
     copy: dest=/home/ansible/ src="/home/pshet/second.html"
 
-- name: Second
-  hosts: first
-  tasks:
-  - name: create a group
-    group: name=check
+
