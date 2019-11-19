@@ -1,0 +1,5 @@
+---
+    - include: book1.yml
+    - include: book2.yml
+    - include: book7.yml
+...
