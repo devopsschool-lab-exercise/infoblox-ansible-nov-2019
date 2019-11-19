@@ -1,6 +1,4 @@
 ---
-  - name: This playbook has all the tasks
-    tasks:
     - name: Create a group named deploy
       group: name=deploy
     - name: Create a user named deploy-user under the group deploy 
