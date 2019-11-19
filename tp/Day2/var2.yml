@@ -1,0 +1,3 @@
+myname=tp2
+#to run on cmd line
+#ansible-playbook -i inventory var1.yml -u cloudqa -k -K -b -v -e "myname='tp3'"
