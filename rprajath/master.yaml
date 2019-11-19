@@ -1,9 +1,0 @@
----
-  - name: This play calls all 7 yamls
-    hosts: all
-  - include: 1_create_group.yaml
-  - include: 2_create_user.yaml
-  - include: 3_install_httpd.yaml
-  - include: 4_start_httpd.yaml
-  - include: 5_index_html.yaml
-  - include: 7_install_git_wget.yaml
