@@ -335,8 +335,40 @@ ansible_become=yes
 ansible all -i inventory -m apt -a"name=apache2 state=present" 
 
  
-ansible ubuntu -i inventory -m apt -a"name=* state=latest" 
+ansible ubuntu -i inventory -m apt -a"upgrade=yes update_cache=yes" 
 ansible ubuntu -i inventory -m apt -a"name=apache2 state=present" 
 
 ansible all -i inventory -m yum -a"name=httpd state=present" -u ec2-user --key-file=rhel.pem -b
 
+=================PLAYBOOK==================================
+ansible - -m apt -a"name=apache2 state=present"
+ansible localhost -m copy -a"dest=/var/www/html src=/home/ubuntu/index.html"
+ansible localhost -m service -a"name=apache2 state=started"
+ansible localhost -m file -a"path=/var/www/html/index.html mode=755"
+
+==============
+PLAYBOOK - 
+        - HAS MULTIPLE PLAY
+EACH PLAY HAS 
+        - hosts
+        - tasks
+EACH tasks
+        - May have name 
+        - Mdoule and parameters
+
+
+---
+- name: This sets up an httpd webserver
+  hosts: ubuntu
+  tasks:
+  - name: Update all packages to the latest version
+    apt: upgrade=dist
+  - name: Install the httpd apps
+    apt: name=apache2
+  - name: start the httpd service
+    service: name=apache2 state=started
+  - name: create a empty fle
+    file: dest=/opt/test.txt state=touch
+  - name: copy a file
+    copy: dest=/var/www/html/ src="/home/ubuntu/index.html"
+...
