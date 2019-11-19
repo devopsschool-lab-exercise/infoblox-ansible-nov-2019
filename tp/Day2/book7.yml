@@ -1,0 +1,9 @@
+---
+- name: Exercise 2 Problem 7
+  hosts: ubuntu
+  tasks:
+  - name: Install package named git
+    package: name=git state=present
+  - name: Install package named wget
+    package: name=wget state=present
+...
