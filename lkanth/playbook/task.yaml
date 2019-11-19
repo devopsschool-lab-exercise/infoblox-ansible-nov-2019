@@ -1,0 +1,2 @@
+- name: Create a group "deploy"
+  group: name=deploy1 state=present
