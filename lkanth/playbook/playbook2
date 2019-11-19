@@ -1,0 +1,7 @@
+---
+ - name: Create a user
+   hosts: node1
+   tasks:
+   - name: Create a user "deploy-user"
+     user: name=deploy-user group=deploy state=present
+...
