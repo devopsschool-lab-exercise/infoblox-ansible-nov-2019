@@ -1,0 +1,5 @@
+- name: This sets up an httpd webserver
+  hosts: web
+  tasks:
+  - name: copy a file
+    copy: dest=/var/www/html/ src="/home/ubuntu/index.html"
