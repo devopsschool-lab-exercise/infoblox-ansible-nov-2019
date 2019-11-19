@@ -1,0 +1,5 @@
+- name: This sets up group
+  hosts: web
+  tasks:
+  - name: Create a group
+    group: name=deploy1
