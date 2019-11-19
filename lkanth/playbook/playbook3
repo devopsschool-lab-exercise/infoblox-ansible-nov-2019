@@ -1,0 +1,7 @@
+---
+ - name: Create a package
+   hosts: node1
+   tasks:
+   - name: Create a package "apache2"
+     package: name=apache2 state=present
+...
