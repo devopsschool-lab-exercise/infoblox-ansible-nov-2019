@@ -1,0 +1,19 @@
+---
+  - name: This play performs multiple tasks
+    hosts: all
+    tasks:
+    - name: Create a group named deploy
+      group: name=deploy
+    - name: Create a user named deploy-user under the group deploy
+      user: name=deploy-user group=deploy
+    - name: Install apache2
+      apt: name=apache2
+    - name: Start apache2
+      service: name=apache2 state=started
+    - name: Move index.html to /var/www/html
+      copy: dest=/var/www/html src=/mnt/home/rpatavardhan/Ansible/index.html
+    - name: Reboot self machines
+      reboot: msg=Rebooting...
+    - name: install git
+      git: repo=https://github.com/scmgalaxy/ansible-role-template dest=/home/git
+...
