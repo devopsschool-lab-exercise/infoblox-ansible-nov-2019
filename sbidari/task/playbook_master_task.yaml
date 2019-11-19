@@ -1,0 +1,10 @@
+---
+- name: Master playbook to call all tasks
+  hosts: localhost
+  tasks:
+        - include: playbook_apache_task.yaml
+        - include: playbook_file_task.yaml
+        - include: playbook_git_clone_task.yaml
+        - include: playbook_package_install_task.yaml
+        - include: playbook_user_task.yaml
+...
