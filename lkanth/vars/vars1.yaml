@@ -1,0 +1,10 @@
+---
+ - name: Testing variables
+   hosts: node1
+   vars:
+     myname: "Kanth"
+
+   tasks:
+   - debug:
+       msg: "My name is {{myname}}"
+...
