@@ -1,4 +1,4 @@
-- name: This sets up an httpd webserver
+- name: create an empty file
   hosts: web
   tasks:
   - name: create a empty fle
