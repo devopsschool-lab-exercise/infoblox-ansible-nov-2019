@@ -2,4 +2,8 @@
 - hosts: web
   tasks:
   - include: stuff.yaml
+  
+ - include: playbook1.yaml
+  - include: playbook2.yaml
+ 
 ...
