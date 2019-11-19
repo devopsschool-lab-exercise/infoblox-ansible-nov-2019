@@ -1,0 +1,11 @@
+---
+  - name: Print OS information
+    hosts: all
+    tasks:
+    - debug: 
+        var: ansible_nodename
+      when: ansible_os_family == "Debian"
+    - debug:
+        var: ansible_distribution
+      when: ansible_os_family == "Debian"
+...
