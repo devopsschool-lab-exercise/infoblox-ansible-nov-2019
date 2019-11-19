@@ -1,0 +1,9 @@
+---
+- name: Install packages
+  hosts: localhost
+  tasks:
+      - name: Install git package
+        apt: name=git state=present
+      - name: Install wget package
+        apt: name=wget state=present
+...
