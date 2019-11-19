@@ -1,0 +1,13 @@
+---
+ - name: Testing variables
+   hosts: node1
+   vars:
+     myname: "Kanth"
+
+   vars_files:
+     - "external.yaml"
+
+   tasks:
+   - debug:
+       msg: "My name is {{myname}}"
+...
