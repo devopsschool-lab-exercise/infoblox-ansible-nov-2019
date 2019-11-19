@@ -1,0 +1,7 @@
+---
+- name: Exercise 2 Problem 3
+  hosts: ubuntu
+  tasks:
+  - name: Install package named apache2
+    package: name=apache2 state=present
+...
