@@ -557,3 +557,5 @@ https://www.devopsschool.com/blog/ansible-variable-lab-excercise-part-1/
 https://www.devopsschool.com/blog/ansible-variable-lab-excercise-part-2/
 
 =======================================
+Conditioning
+https://www.devopsschool.com/tutorial/ansible/ansible-conditional-programming-playbooks.html
