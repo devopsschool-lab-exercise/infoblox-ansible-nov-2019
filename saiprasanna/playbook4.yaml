@@ -1,4 +1,4 @@
-- name: This sets up an httpd webserver
+- name: copy from src to dest
   hosts: web
   tasks:
   - name: copy a file
