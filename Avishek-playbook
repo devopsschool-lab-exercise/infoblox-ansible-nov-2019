@@ -1,0 +1,28 @@
+1.
+- name: create a group
+  hosts: webserver
+  tasks:
+  - group:
+    name: deploy
+    state: present
+
+3.
+---
+- name: install the latest version of Apache
+  hosts: ubuntu
+  tasks:
+  - yum:
+    name: httpd
+    state: latest
+	
+4.
+---
+- name: install the latest version of Apache
+  hosts: webservers
+  tasks:
+  - name : install httpd
+    apt: name=apache2
+  - name: start the httpd service
+    service: name=apache2 state=started
+5.
+
