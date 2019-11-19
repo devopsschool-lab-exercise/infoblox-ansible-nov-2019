@@ -1,0 +1,20 @@
+---
+ - name: Testing variables
+   hosts: node1
+   vars:
+     myname: "Kanth"
+
+   vars_files:
+     - "external.yaml"
+
+   vars_prompt:
+     - name: "myname"
+       prompt: "Enter new name"
+       private: no
+
+   tasks:
+   - debug:
+       msg: "My name is {{myname}}"
+   - debug:
+       var: myname
+...
