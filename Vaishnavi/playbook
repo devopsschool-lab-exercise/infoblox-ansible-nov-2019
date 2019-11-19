@@ -39,3 +39,22 @@ master_playbook.yml
      include: playbook1.yml
      include: playbook2.yml
      include: playbook3.yml
+
+master_task.yml
+---
+- name: This is a sample master playbook calling all tasks
+  hosts: vaish, local, rhel
+  tasks:
+          #- name: including all
+        - include: task1.yml #, task2.yml, task3.yml
+        - include: task2.yml
+        - include: task3.yml
+-------------task1.yml
+---
+  - name: create a group called deploy
+    group: name=deploy state=present
+
+  - name: create a user called deploy-user
+    user: name=deploy-user state=present
+    
+--------------task1.yml
