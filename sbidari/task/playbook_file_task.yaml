@@ -1,6 +1,4 @@
 ---
-- name: File operation
-  tasks:
       - name: Create a file
         file: path=/var/www/html/index.html state=touch mode='0777'
       - name: Copy a file
