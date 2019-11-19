@@ -20,4 +20,30 @@ Playbook 2
     service: name=apache2 state=started
 ...
 
+Playbook 3
+---
+- name: Exercise 2 Problem 7
+  hosts: ubuntu
+  tasks:
+  - name: Install package named git
+    package: name=git state=present
+  - name: Install package named wget
+    package: name=wget state=present
+...
 
+Playbook 4
+---
+- name: Exercise 2 Problem 8
+  hosts: ubuntu
+  tasks:
+  - name: Clone git repo
+    git: repo=https://github.com/scmgalaxy/ansible-role-template dest=/home/cloudqa/tp/tp3
+
+...
+
+Playbook 5
+---
+    - include: book.yml
+    - include: book2.yml
+    - include: book7.yml
+...
