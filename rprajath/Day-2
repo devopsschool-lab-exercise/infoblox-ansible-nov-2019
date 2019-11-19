@@ -463,3 +463,23 @@ rajath | SUCCESS => {
     "uid": 1000
 }
 
+
+
+
+
+
+vi inventory
+[group1]
+pshet ansible_host=10.39.18.23 ansible_user=pshet ansible_password=infoblox
+
+[group2]
+rajath ansible_host=10.39.18.23 ansible_user=rajath ansible_password=rajath
+
+
+ansible all -i inventory -m apt -a"name=apache2 state=present" 
+ansible all -i inventory -m service -a"name=apache2 state=started" 
+ansible all -i inventory -m copy -a"dest=/var/www/html src=/mnt/home/rpatavardhan/Ansible/test.html"
+
+========================================================================================================
+
+
