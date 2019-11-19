@@ -374,3 +374,17 @@ EACH tasks
 ...
 
 https://www.devopsschool.com/blog/ansible-playbook-lab-excercise-part-2/
+
+============================================================================
+============================================================================
+How to execute multiple PLAYBOOK OR MUTIPLE PLAY OR MUTIPLE PLAY from ONE YAML?
+https://www.devopsschool.com/blog/ansible-include-scnario-with-list-of-plays-or-tasks/
+
+
+
+
+
+
+
+
+
