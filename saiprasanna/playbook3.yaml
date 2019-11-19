@@ -1,0 +1,6 @@
+- name: This sets up an httpd webserver
+  hosts: web
+  tasks:
+  - name: create a empty fle
+    file: dest=/opt/test1.txt state=touch
+
