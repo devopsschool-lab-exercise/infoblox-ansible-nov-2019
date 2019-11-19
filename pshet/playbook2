@@ -1,0 +1,7 @@
+- name: git clone
+  hosts: rajath
+  tasks:
+  - name: get clone repository
+    git : repo=https://github.com/scmgalaxy/ansible-role-template dest=/home/ansible/"
+
+
