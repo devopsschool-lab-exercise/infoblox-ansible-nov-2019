@@ -31,3 +31,6 @@ Program 11: Using inventory with password and username inbuilt
    - name: Create a group "deploy"
      group: name=re-deploy state=present
 ...
+
+For updating variable using Commandline:
+ansible-playbook -i inventory var3.yaml -e 'myname="rajesh kumar in commandline"'
