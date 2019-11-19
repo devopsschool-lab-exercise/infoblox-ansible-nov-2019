@@ -1,0 +1,6 @@
+---
+- name: Clone a git source code
+  tasks:
+      - name: Clone a git source code
+        git: repo='https://github.com/scmgalaxy/ansible-role-template' dest=/home/som/Desktop/Ansible/playbook/git
+...
