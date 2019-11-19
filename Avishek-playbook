@@ -24,5 +24,11 @@
     apt: name=apache2
   - name: start the httpd service
     service: name=apache2 state=started
-5.
+7.
+- name: install git repository
+  hosts: webserver
+  tasks:
+  - yum:
+    name: git
+    state: latest
 
