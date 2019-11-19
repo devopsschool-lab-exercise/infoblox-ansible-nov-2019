@@ -24,3 +24,10 @@ Program 11: Using inventory with password and username inbuilt
       Command:      
             ansible all -i inventory -m apt -a"name=apache2 state=present"
     
+---
+ - name: Create a group
+   hosts: node
+   tasks:
+   - name: Create a group "deploy"
+     group: name=re-deploy state=present
+...
