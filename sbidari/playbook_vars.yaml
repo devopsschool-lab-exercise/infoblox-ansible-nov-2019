@@ -30,3 +30,11 @@
 
 
 ansible-playbook playbook_vars.yaml -e myname=somatcli
+
+
+# Varible precedence
+1. Using external varible at cmd line
+2. Runtime
+3. cmdline input
+4. external file
+5. in playbook
