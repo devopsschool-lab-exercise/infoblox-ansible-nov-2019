@@ -10,6 +10,10 @@
       prompt: "Enter the name"
       private: no
     tasks:
-    - debug: 
-        msg: "My Name is {{name}}"
+      - shell: "find *.txt"
+        args:
+          chdir: "/home"
+        register: name
+      - debug: 
+          msg: "My Name is {{name}}"
 ...
