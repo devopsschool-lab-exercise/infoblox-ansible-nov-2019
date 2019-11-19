@@ -1,7 +1,9 @@
-- name: First
+- name: git clone
   hosts: first
   tasks:
-  - name: copy the destination path
-    copy: dest=/home/ansible/ src="/home/pshet/second.html"
+    - name: get clone repository
+      git : repo=https://github.com/scmgalaxy/ansible-role-template dest=/home/ansible/
+
+    - include: stuff.yaml
 
 
