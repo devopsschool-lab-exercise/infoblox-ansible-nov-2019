@@ -1,0 +1,2 @@
+- name: http service state
+  service: name=apache2 state=restarted enabled=yes
