@@ -1,0 +1,9 @@
+---
+    - include: playbook_apache.yaml
+    - include: playbook_file.yaml
+    - include: playbook_git_clone.yaml
+    - include: playbook_package_install.yaml
+    - include: playbook_user.yaml
+
+
+...
