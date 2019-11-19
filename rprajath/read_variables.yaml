@@ -1,0 +1,15 @@
+---
+  - name: This play prints variables from different sources
+    hosts: all
+    vars:
+      name: Rajath in playbook	
+    vars_files:
+      - variables.yaml
+    vars_prompt:
+    - name: "name"
+      prompt: "Enter the name"
+      private: no
+    tasks:
+    - debug: 
+        msg: "My Name is {{name}}"
+...
