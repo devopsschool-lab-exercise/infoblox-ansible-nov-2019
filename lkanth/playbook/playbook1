@@ -1,0 +1,20 @@
+---
+ - name: Create a group
+   hosts: node1
+   tasks:
+   - name: Create a group "deploy"
+     group: name=redeploy state=present
+...
+
+
+
+[node1]
+10.39.18.122
+
+[node1:vars]
+ansible_user=node1
+ansible_password=infoblox
+ansible_become=yes
+ansible_become_password=infoblox
+
+
