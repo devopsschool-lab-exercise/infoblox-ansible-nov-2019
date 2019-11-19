@@ -1,0 +1,38 @@
+---
+- name: This sets up an httpd webserver
+  hosts: ubuntu
+  vars:
+    myname: "RajathAV in playbook"
+    package: "apache2"
+    service: "apache2"
+  vars_files:
+    - "var2.yaml"
+  vars_prompt:
+    - name: "Version"
+      prompt: "Which version Do you want to install?"
+      private: no
+
+
+  tasks:
+  - name: Update all packages to the latest version
+    apt: upgrade=dist
+  - name: Install the httpd apps
+    apt: name={{package}}
+  - name: start the httpd service
+    service: name={{service}} state=started
+  - name: create a empty fle
+    file: dest=/opt/test.txt state=touch
+  - name: copy a file
+    copy: dest=/var/www/html/ src="/home/ubuntu/index.html"
+  - debug:
+      msg: "My Name is {{myname}}"
+  - name: Ansible register variable basic example
+    shell: "find *.txt"
+    args:
+      chdir: "/home/ubuntu"
+    register: find_output
+  - debug:
+      var: find_output
+  - debug:
+      var: Version
+...
