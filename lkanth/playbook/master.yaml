@@ -1,0 +1,5 @@
+---
+ - include: playbook1.yaml
+ - include: playbook2.yaml
+ - include: playbook3.yaml
+...
