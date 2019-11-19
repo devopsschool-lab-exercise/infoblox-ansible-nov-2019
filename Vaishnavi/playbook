@@ -1,0 +1,10 @@
+---
+- name: This is a sample playbook
+  hosts: vaish, local, rhel
+  tasks:
+  - name: create a group called deploy
+    group: name=deploy state=present
+
+  - name: create a user called deploy-user
+    user: name=deploy-user state=present
+
