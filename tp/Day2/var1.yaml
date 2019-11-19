@@ -1,0 +1,27 @@
+---
+- name: This tests variable precedence
+  hosts: ubuntu
+  vars:
+    myname: "tp in playbook"
+    package: "apache2"
+    service: "apache2"
+  vars_files:
+    - "var2.yml"
+  vars_prompt:
+    - name: "Version"
+      prompt: "Which version Do you want to install?"
+      private: no
+
+  tasks:
+  - debug: 
+      msg: "My Name is {{myname}}"
+  - name: Ansible register variable basic example
+    shell: "find *.txt"
+    args:
+      chdir: "/home/cloudqa"
+    register: find_output
+  - debug:
+      var: find_output
+  - debug:
+      var: Version
+...
