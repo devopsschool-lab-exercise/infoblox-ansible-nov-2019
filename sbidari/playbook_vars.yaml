@@ -26,3 +26,7 @@
        msg: "My name is {{myname}}"
 
 ...
+
+
+
+ansible-playbook playbook_vars.yaml -e myname=somatcli
