@@ -10,4 +10,17 @@ Program 10: Create a file inventory (in INI format):
                             172.31.44.173
                             172.31.44.174
     ansible web -i inventory -m apt -a"name=apache2 state=present" -u ubuntu --key-file=rajath.pem -b
+
+Program 11: Using inventory with password and username inbuilt
+    inventory file example: 
+                contents:
+                       [ubuntu]
+                       IP
+                       IP
+                       [ubuntu:vars]
+                       ansible_user+ubuntu
+                       ansible_ssh_private_key_file=rajath.pem
+                       ansible_become=yes
+      Command:      
+            ansible all -i inventory -m apt -a"name=apache2 state=present"
     
