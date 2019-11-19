@@ -8,3 +8,15 @@
   - name: create a user called deploy-user
     user: name=deploy-user state=present
 
+
+
+playbook2-
+---
+- name: This is a sample playbook
+  hosts: vaish, local, rhel
+  tasks:
+  - name: install apache
+    apt: name=apache2 state=present
+
+  - name: start apache
+    service: name=apache2 state=started
