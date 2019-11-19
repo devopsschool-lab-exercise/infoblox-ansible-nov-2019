@@ -458,7 +458,7 @@ ansible-playbook -i inventory var3.yaml -e 'myname="rajesh kumar in commandline"
 =========================
 ---
 - name: This sets up an httpd webserver
-  hosts: ubuntu
+  hosts: ubuntu,
   vars:
     myname: "rajesh kumar in playbook"
     package: "apache2"
@@ -495,12 +495,60 @@ ansible-playbook -i inventory var3.yaml -e 'myname="rajesh kumar in commandline"
       var: Version
 ...
 
+====================================================
+GROUP OF GROUPS In Inventory
+-------------------------
 
 
+[web]
+10.0.4.5
+10.0.4.6
+10.0.4.7
+10.0.4.5
+
+[db]
+10.0.4.5
+10.0.4.6
+10.0.4.7
+10.0.4.5
+
+[supergroups:children]
+web
+db
 
 
+---
+- name: This sets up an httpd webserver
+  hosts: web,db
+
+---
+- name: This sets up an httpd webserver
+  hosts: supergroups
 
 
+myxname: xyzall
+
+root@ip-172-31-6-49:~# tree
+.
+├── group_vars
+│   ├── all
+│   └── ubuntu
+├── host_vars
+│   ├── 13.232.89.26
+│   └── server1
+├── index.html
+├── inventory
+├── raj.txt
+├── rhel.pem
+├── ubunutu.pem
+├── var1.yaml
+├── var2.yaml
+├── var3.yaml
+├── var4.yaml
+├── var5.yaml
+└── web1.yaml
+
+2 directories, 15 files
 
 
 
