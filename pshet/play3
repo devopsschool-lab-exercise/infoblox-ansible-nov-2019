@@ -1,0 +1,5 @@
+- name: Second
+  hosts: first
+  tasks:
+  - name: create a group
+    group: name=check
