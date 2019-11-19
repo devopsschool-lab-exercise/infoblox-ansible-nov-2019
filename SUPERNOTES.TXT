@@ -551,6 +551,9 @@ root@ip-172-31-6-49:~# tree
 2 directories, 15 files
 
 
+Variables excercise
+=======================================
+https://www.devopsschool.com/blog/ansible-variable-lab-excercise-part-1/
+https://www.devopsschool.com/blog/ansible-variable-lab-excercise-part-2/
 
-
-
+=======================================
