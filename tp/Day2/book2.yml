@@ -1,0 +1,7 @@
+---
+- name: Exercise 2 Problem 2
+  hosts: ubuntu
+  tasks:
+  - name: Create a user called deploy-user which is part of group called deploy and with /bin/bash shell.
+    user: name=deploy-user state=present
+...
