@@ -381,6 +381,124 @@ How to execute multiple PLAYBOOK OR MUTIPLE PLAY OR MUTIPLE PLAY from ONE YAML?
 https://www.devopsschool.com/blog/ansible-include-scnario-with-list-of-plays-or-tasks/
 
 
+==========================================================================
+Variables
+---------------------
+28 DIFF PLACES.....
+
+https://www.devopsschool.com/tutorial/ansible/variables/index.html
+
+=============Playbook==================
+Variables in Playbook(Embed)
+Variables in Playbook using EXTERNAL file.
+Variables using command line
+Variables during runtime 
+Variables using User inputs.....
+
+=============Inventory==================
+Variables in Inventory
+Variables in Inventory GROUP
+Variables in Inventory DIR- group_vars
+Variables in Inventory DIR- hosts_vars
+
+---
+- name: This sets up an httpd webserver
+  hosts: ubuntu
+  vars:
+    myname: "rajesh kumar in playbook"
+    package: "apache2"
+    service: "apache2"
+  vars_files:
+    - "var2.yaml"
+
+  tasks:
+  - name: Update all packages to the latest version
+    apt: upgrade=dist
+  - name: Install the httpd apps
+    apt: name={{package}}
+  - name: start the httpd service
+    service: name={{service}} state=started
+  - name: create a empty fle
+    file: dest=/opt/test.txt state=touch
+  - name: copy a file
+    copy: dest=/var/www/html/ src="/home/ubuntu/index.html"
+  - debug: 
+      msg: "My Name is {{myname}}"
+...
+
+
+ansible-playbook -i inventory var3.yaml -e "myname=rajeshkumarincommandline"
+ansible-playbook -i inventory var3.yaml -e 'myname="rajesh kumar in commandline"'
+
+---
+- name: This sets up an httpd webserver
+  hosts: ubuntu
+  vars:
+    myname: "rajesh kumar in playbook"
+    package: "apache2"
+    service: "apache2"
+  vars_files:
+    - "var2.yaml"
+
+  tasks:
+  - name: Update all packages to the latest version
+    apt: upgrade=dist
+  - name: Install the httpd apps
+    apt: name={{package}}
+  - name: start the httpd service
+    service: name={{service}} state=started
+  - name: create a empty fle
+    file: dest=/opt/test.txt state=touch
+  - name: copy a file
+    copy: dest=/var/www/html/ src="/home/ubuntu/index.html"
+  - debug: 
+      msg: "My Name is {{myname}}"
+...
+
+=========================
+---
+- name: This sets up an httpd webserver
+  hosts: ubuntu
+  vars:
+    myname: "rajesh kumar in playbook"
+    package: "apache2"
+    service: "apache2"
+  vars_files:
+    - "var2.yaml"
+  vars_prompt:
+    - name: "Version"
+      prompt: "Which version Do you want to install?"
+      private: no
+
+
+  tasks:
+  - name: Update all packages to the latest version
+    apt: upgrade=dist
+  - name: Install the httpd apps
+    apt: name={{package}}
+  - name: start the httpd service
+    service: name={{service}} state=started
+  - name: create a empty fle
+    file: dest=/opt/test.txt state=touch
+  - name: copy a file
+    copy: dest=/var/www/html/ src="/home/ubuntu/index.html"
+  - debug: 
+      msg: "My Name is {{myname}}"
+  - name: Ansible register variable basic example
+    shell: "find *.txt"
+    args:
+      chdir: "/home/ubuntu"
+    register: find_output
+  - debug:
+      var: find_output
+  - debug:
+      var: Version
+...
+
+
+
+
+
 
 
 
