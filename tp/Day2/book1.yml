@@ -1,0 +1,7 @@
+---
+- name: Exercise 2 Problem 1
+  hosts: ubuntu
+  tasks:
+  - name: Create a group called deploy
+    group: name=deploy state=present
+...
