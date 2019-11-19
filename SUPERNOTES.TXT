@@ -372,3 +372,5 @@ EACH tasks
   - name: copy a file
     copy: dest=/var/www/html/ src="/home/ubuntu/index.html"
 ...
+
+https://www.devopsschool.com/blog/ansible-playbook-lab-excercise-part-2/
