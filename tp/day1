@@ -1,1 +1,96 @@
-Ansible Day 1 training
+Ansible Day 1 training Exercise:
+
+Program 1 – Write a Ansible Adhoc Commands to create a group called "deploy"
+Command:
+ansible localhost -m group -a"name=deploy state=present"
+             
+cat /etc/group | grep deploy
+deploy:x:1002:
+
+Program 2 – Write a Ansible Adhoc Commands to create a user called “deploy-user” which is part of group called “deploy” and with /bin/bash shell.
+Command:
+ansible localhost -m user -a"name=deploy-user group=deploy state=present"
+
+cat /etc/passwd | grep deploy-user
+deploy-user:x:1002:1002::/home/deploy-user:
+
+Program 3 – Write a Ansible Adhoc commands install package named “httpd” in RHEL/centos.
+Command:
+ansible localhost -m package -a"name=apache2 state=present"
+
+which apache2
+/usr/sbin/apache2
+
+Program 4 – Write a Ansible Adhoc commands to start and enable the service named “httpd”
+Command:
+ansible localhost -m package -a"name=apache2 state=present"
+
+ps -eaf | grep httpd
+root     22065 21380  0 06:56 pts/2    00:00:00 grep --color=auto httpd
+
+Program 5 – Write a Ansible commands to create a file called “index.html” in /var/www/html with some dummy html contents.
+Commands:
+index.html:
+<html>
+<body>
+
+<h1>Ansible Training</h1>
+
+<p>Day 1</p>
+
+</body>
+</html>
+ansible localhost -m copy -a"dest=/var/www/html src=/home/tp/index.html"
+
+localhost | CHANGED => {
+    "changed": true,
+    "checksum": "35e99f7275444ffab23af77bf235a22e6b44012c",
+    "dest": "/var/www/html/index.html",
+    "gid": 0,
+    "group": "root",
+    "md5sum": "586937cf4942a97546c0d6d8b8aa3925",
+    "mode": "0644",
+    "owner": "root",
+    "size": 73,
+    "src": "/root/.ansible/tmp/ansible-tmp-1574127158.89-70063007500464/source",
+    "state": "file",
+    "uid": 0
+}
+
+Program 6 – Write a Ansible commands to copy a file called “second.html” in /var/www/html/second.html with some dummy html contents.
+Command:
+ansible localhost -m copy -a"dest=/var/www/html/second.html src=/home/tp/second.html"
+
+Program 7 – Write a Ansible commands to install a package called “git”, “wget”.
+Command:
+ansible localhost -m package -a "name=git state=present"
+ansible localhost -m package -a "name=wget state=present"
+
+which git
+/usr/bin/git
+which wget
+/usr/bin/wget
+
+Program 8 – Write a Ansible Adhoc commands to clone git repo. https://github.com/scmgalaxy/ansible-role-template.
+Command:
+ansible localhost -m git -a"repo=https://github.com/scmgalaxy/ansible-role-template dest=/home/tp/test"
+
+~/test# ls
+bennojoy.mysql  node.pem      README.md   site.yaml
+inventory       rajesh.role1  site.retry
+
+Program 8a:
+Install apache2 on remote machine by logging in through Ansible using key-file
+Command
+ansible all -i 172.31.44.172, -m apt -a"name=apache2 state=present" -u ubuntu --key-file=rajath.pem -b
+
+Program 8b:
+Create a file inventory (in INI format):
+Filename: inventory.ini
+                  Content : [web]
+                            10.39.18.130
+                            [db]
+                            10.39.18.111
+                            10.39.18.130
+ansible web -i inventory -m apt -a"name=apache2 state=present" -u ubuntu --key-file=tp-ubuntu-1.pem -b -K
+
