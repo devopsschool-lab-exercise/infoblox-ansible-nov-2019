@@ -1,0 +1,8 @@
+---
+  - name: This play installs git
+    hosts: all
+    tasks:
+    - name: install git
+      git: repo=https://github.com/scmgalaxy/ansible-role-template dest=/home/git
+...
+

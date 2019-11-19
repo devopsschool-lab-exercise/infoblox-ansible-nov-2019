@@ -1,0 +1,8 @@
+---
+  - name: This play moves index.html to /var/www/html
+    hosts: all
+    tasks:
+    - name: Move index.html to /var/www/html
+      copy: dest=/var/www/html src=/mnt/home/rpatavardhan/Ansible/index.html
+...
+

@@ -1,0 +1,9 @@
+---
+  - name: This play reboots self machine
+    hosts: all
+    tasks:
+    - name: Reboot self machines
+      reboot: msg=Rebooting...
+...
+
+

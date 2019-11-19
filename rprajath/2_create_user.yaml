@@ -1,0 +1,7 @@
+---
+  - name: This play creates a user named deploy-user under the group deploy
+    hosts: all
+    tasks:
+    - name: Create a user named deploy-user under the group deploy 
+      user: name=deploy-user group=deploy
+...

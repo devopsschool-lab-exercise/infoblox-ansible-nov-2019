@@ -1,0 +1,7 @@
+---
+  - name: This play creates a group named deploy
+    hosts: all
+    tasks:
+    - name: Create a group named deploy
+      group: name=deploy
+...
