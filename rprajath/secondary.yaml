@@ -1,0 +1,28 @@
+---
+  - name: Copy apache2.conf with port 80
+    hosts: dev
+    vars:
+      port: 80
+    tasks:
+    - name: Copy apache2(dev)
+      copy: dest="/etc/apache2/apache2.conf" src="/mnt/home/rpatavardhan/Ansible/Day-3/apache2.j2"
+    - template:
+        src: /mnt/home/rpatavardhan/Ansible/Day-3/apache2.j2
+        dest: /etc/apache2/apache2.conf
+    - debug:
+        msg: "Dev port is {{ port }}"
+
+  - name: Copy apache2.conf with port 8080
+    hosts: qa
+    vars:
+      port: 8080
+    tasks:
+    - name: Copy apache2(qa)
+      copy: dest="/etc/apache2/apache2.conf" src="/mnt/home/rpatavardhan/Ansible/Day-3/apache2.j2"
+    - template:
+        src: /mnt/home/rpatavardhan/Ansible/Day-3/apache2.j2
+        dest: /etc/apache2/apache2.conf
+    - debug:
+        msg: "QA port is {{port}}"
+
+...    
