@@ -9,3 +9,9 @@
   - name: Install webserver on RHEL
     yum: name=httpd state=present
     when: ansible_os_family == "RedHat"
+  - shell: "ls"
+    args:
+      chdir: "/etc"
+    register: files
+  - debug:
+      msg: "Files in /etc are {{files}}"
