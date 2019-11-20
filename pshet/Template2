@@ -1,0 +1,13 @@
+---
+  - name: Copy apache2.conf with port 80
+    hosts: first
+    vars:
+      port: 80
+    tasks:
+    - name: Copy apache2(dev)
+      copy: dest="/etc/apache2/apache2.conf" src="/home/pshet/apache2.j2"
+    - template:
+        src: /home/pshet/apache2.j2
+        dest: /etc/apache2/apache2.conf
+    - debug:
+        msg: "Dev port is {{ port }}"
