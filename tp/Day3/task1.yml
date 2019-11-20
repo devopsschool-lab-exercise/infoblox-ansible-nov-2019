@@ -1,0 +1,16 @@
+---
+    - hosts: localhost
+      tasks:
+      - name: Install package named apache2
+        package: name=apache2 state=present
+        when: ansible_os_family == "Debian"
+      - name: Install httpd
+        package: name=httpd state=present
+        when: ansible_os_family == "redhat"
+      - shell: ls /etc
+        register: output
+      - name: Files in /etc 
+        debug:
+          msg: "Files in /etc are {{output}}"
+        when: output.stdout != 0
+...
