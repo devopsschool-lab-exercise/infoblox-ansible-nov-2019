@@ -559,3 +559,88 @@ https://www.devopsschool.com/blog/ansible-variable-lab-excercise-part-2/
 =======================================
 Conditioning
 https://www.devopsschool.com/tutorial/ansible/ansible-conditional-programming-playbooks.html
+
+Looping
+https://www.devopsschool.com/tutorial/ansible/ansible-looping-programming-playbooks.html
+
+Variables - Examples
+        boolean
+        String
+        number
+        list
+        dict
+            key: value
+            age: [4 5 6 7 7 ]
+==================================================
+Templates in Ansible
+Handlers in Ansible
+ROLES in Ansible
+==================================================
+COPY module.
+
+  file.html         ======>   file.html
+    {{ varname }}             {{ varname }}
+                                sdffsf
+=================================================
+copy a file -----> DIFF ENV
+    httpd.conf
+    LISTEN 80
+                  ---- MACHINE1 8081
+                  ---- MACHINE1 8085
+==================================================
+Template in python - Jinza2...
+Ansible Support ----Jinza2 as well.
+========================================
+Spec -----
+        Step 1 - create a file with .j2 which you want to interpolate
+        Step 2 - use a module called  "template"
+  15.206.128.164
+  52.66.245.173
+
+
+---
+- name: This sets up an httpd webserver
+  hosts: localhos\
+  become: yes
+  vars:
+    myname: "rajesh kumar in playbook"
+
+  tasks:
+  - name: Update all packages to the latest version
+    apt: upgrade=dist
+  - name: Install the httpd apps
+    apt: name=apache2 state=present
+  - name: start the httpd service
+    service: name=apache2 state=started
+  - name: copy a file
+    copy: dest=/var/www/html/ src="/home/ubuntu/index.j2"
+  - debug: 
+      msg: "My Name is {{myname}}"
+  - template:
+      src: index.j2
+      dest: /var/www/html/index.html
+...
+
+
+Exercise 
+https://www.devopsschool.com/blog/ansible-playbook-lab-excercise-part-3/
+
+
+
+
+
+
+
+===============================================
+Day 4 - Module Dev using Python + Bash 
+Day 5 - TOWER + Ansible in Windows
+
+
+dict
+    key: dict
+    LOOPOING
+
+
+Looping at DICT
+
+    
