@@ -1,0 +1,26 @@
+---
+# tasks file for web
+  - name: Install package named apache2 if OS is Linux
+    package: name=apache2 state=present
+    when: ansible_os_family == "Debian"	
+  - name: start the apache2 service
+    service: name=apache2 state=started	
+  - name: Copy a index.j2 into /var/www/html
+    copy: dest=/var/www/html/ src=index.j2	
+  - template:
+      src: httpd.j2
+      dest: /etc/apache2/ports.conf
+    notify:
+    - restart apache
+  - shell: sh /home/tp/ansible-roles/shell.sh
+    register: output
+  - local_action: copy content={{ output }} dest=/home/tp/ansible-roles/index.html
+  - name: Create a group called deloitte
+    group: name=deloitte state=present
+  - name: Create a user called deploy
+    user: name=deploy state=present
+  - name: Install git
+    apt: name=git state=present
+  - name: Install vim
+    apt: name=vim state=present
+...
