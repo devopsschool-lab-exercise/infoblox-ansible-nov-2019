@@ -1,0 +1,6 @@
+[dev]
+10.195.21.178 ansible_user=som ansible_ssh_pass=soma ansible_become=yes ansible_become_user=root become_method=sudo ansible_become_password=soma
+
+
+[qa]
+10.195.21.178
