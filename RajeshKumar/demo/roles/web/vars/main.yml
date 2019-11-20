@@ -1,0 +1,4 @@
+---
+# vars file for web
+myname: "rajesh kumar in playbook"
+port: 8080

@@ -1,0 +1,4 @@
+---
+# defaults file for web
+myname: "rajesh kumar in playbook"
+port: 80

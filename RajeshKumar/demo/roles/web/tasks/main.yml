@@ -1,0 +1,16 @@
+---
+# tasks file for web
+  - name: Update all packages to the latest version
+    apt: upgrade=dist
+  - name: Install the httpd apps
+    apt: name=apache2 state=present
+  - name: start the httpd service
+    service: name=apache2 state=started
+  - name: copy a file
+    copy: dest=/var/www/html/ src=index.html
+  - template:
+      src: ports.conf.j2
+      dest: /etc/apache2/ports.conf
+    notify:
+    - restart apache
+
