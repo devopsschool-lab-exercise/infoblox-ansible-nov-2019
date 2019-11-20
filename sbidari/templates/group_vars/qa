@@ -1,0 +1,3 @@
+port: 80
+package: apache2
+service: apache2
