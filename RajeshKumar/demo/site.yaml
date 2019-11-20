@@ -2,5 +2,10 @@
 - hosts: localhost
   become: yes
   gather_facts: no
+  vars_prompt:
+   - name: "nios license string"
+     prompt : "Please enter nios license strings(ex. nios IB-V1425 enterprise dns dhcp cloud)"
+     private: no
   roles:
-    - role: web
+    - role: vmware
+#    - role: web

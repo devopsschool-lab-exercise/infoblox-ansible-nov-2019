@@ -1,0 +1,30 @@
+---
+# vars file for vmware
+   vc_hostname: "10.196.215.21"
+   vc_username: "administrator@india.local"
+   vc_password: "Rooot123"
+   vc_datacenter: "India"
+   vc_cluster: "Compute"
+   vc_datastore: "Dell_Datastore_10TB_1"
+   vm_network: "Internet-200-24"
+   nios_details:
+      grid_master:
+        name: "{{ lookup('ini', 'name section=gm file=nios_details.ini') }}"
+        ip: "{{ lookup('ini', 'ip_address section=gm file=nios_details.ini') }}"
+        netmask: "{{ lookup('ini', 'netmask section=gm file=nios_details.ini') }}"
+        gw: "{{ lookup('ini', 'gateway section=gm file=nios_details.ini') }}"
+      member01:
+        name: "{{ lookup('ini', 'name section=member01 file=nios_details.ini') }}"
+        ip: "{{ lookup('ini', 'ip_address section=member01 file=nios_details.ini') }}"
+        netmask: "{{ lookup('ini', 'netmask section=member01 file=nios_details.ini') }}"
+        gw: "{{ lookup('ini', 'gateway section=member01 file=nios_details.ini') }}"
+      member02:
+        name: "{{ lookup('ini', 'name section=member02 file=nios_details.ini') }}"
+        ip: "{{ lookup('ini', 'ip_address section=member02 file=nios_details.ini') }}"
+        netmask: "{{ lookup('ini', 'netmask section=member02 file=nios_details.ini') }}"
+        gw: "{{ lookup('ini', 'gateway section=member02 file=nios_details.ini') }}"
+   nios_provider:
+        host: "{{ lookup('ini', 'ip_address section=gm file=nios_details.ini') }}"
+        username: admin
+        password: infoblox
+        wapi_version: 2.6 

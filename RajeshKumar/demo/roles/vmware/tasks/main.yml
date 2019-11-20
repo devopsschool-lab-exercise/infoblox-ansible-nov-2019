@@ -1,0 +1,54 @@
+---
+# tasks file for vmware
+
+ - name: Deploying vNIOS appliances  
+    vmware_deploy_ovf:
+      hostname: "{{ vc_hostname }}"
+      username: "{{ vc_username }}"
+      password:  "{{ vc_password }}"
+      datacenter: "{{ vc_datacenter }}"
+      cluster: "{{ vc_cluster }}"
+      datastore: "{{ vc_datastore }}"
+      name:  "{{item.value.name}}"
+      networks: "{u'VM Network':u'{{ vm_network }}'}"
+      disk_provisioning: "thin"
+      validate_certs: no
+      power_on: yes
+      ovf: /root/nios_ztp_vmware/nios-8.1.6-360192-2017-08-25-21-04-00-ddi.ova
+      inject_ovf_env: yes
+      properties:
+        temp_license: nios IB-V1425 enterprise dns dhcp cloud
+        lan1-v4_addr: "{{item.value.ip}}"
+        lan1-v4_netmask: "{{item.value.netmask}}"
+        lan1-v4_gw: "{{item.value.gw}}"
+        default_admin_password: infoblox
+    delegate_to: localhost 
+
+    with_dict: "{{ nios_details }}"
+
+  - name: Waiting for gridmaster to come online
+    command: curl --head --insecure "https://{{ lookup('ini', 'ip_address section=gm file=nios_details.ini') }}"
+    register: result
+    until: result.stdout.find("302 Found")!= -1
+    retries: 50
+    delay: 10
+    changed_when: false
+
+  - name: Waiting httpd service to be active
+    pause:
+     seconds: 20
+
+  - name: Pre-provisioning members in gridmaster
+    nios_member:
+      host_name: "{{item.value.name}}"
+      vip_setting:
+       - address: "{{item.value.ip}}"
+         subnet_mask: "{{item.value.netmask}}"
+         gateway: "{{item.value.gw}}"
+      config_addr_type: IPV4
+      platform: VNIOS
+      comment: "Created by Ansible"
+      state: present
+      provider: "{{ nios_provider }}"
+    with_dict: "{{nios_details}}"
+    when: "'grid_master' not in  item.key" 
