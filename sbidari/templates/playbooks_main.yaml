@@ -9,5 +9,8 @@
     copy: dest=/etc/apache2/ports.conf src="/home/som/Desktop/Ansible/template/ports.j2"
   - name: start the apache2 service
     service: name={{service}} state=started
+  - template:
+      src: ports.j2
+      dest: /etc/apache2/ports.conf.j2
 
 ...
