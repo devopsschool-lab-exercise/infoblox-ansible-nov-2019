@@ -1,0 +1,5 @@
+---
+# vars file for web
+servername: apache2
+port: 8080
+output: Rajath
