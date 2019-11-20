@@ -1,0 +1,5 @@
+[dev]
+pshet ansible_host=10.39.18.22 ansible_user=pshet ansible_password=infoblox 
+
+[qa]
+rajath ansible_host=10.39.18.23 ansible_user=rajath ansible_password=rajath 

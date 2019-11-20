@@ -1,0 +1,31 @@
+---
+# tasks file for web
+- name: Install the httpd apps
+  apt: name={{ servername }} state=present
+  when: ansible_os_family == "Debian"
+- template:
+    src: index.j2 
+    dest: /var/www/html/index.html
+- template:
+    src: httpd.j2
+    dest: /etc/apache2/port.conf
+  notify:
+  - restart apache
+- name: run cmd
+  shell: echo "RAV"
+  register: output
+- template:
+    src: index.j2
+    dest: /var/www/html/index.html
+- name: Ensure group "mygroup" exists
+  group:
+    name: mygroup
+    state: present
+- name: Add the user 'RAV' with a specific uid and a primary group of 'mygroup'
+  user:
+    name: RAV
+    comment: Rajath AV
+    uid: 1040
+    group: mygroup
+- name: Install git package
+  apt: name=git state=present

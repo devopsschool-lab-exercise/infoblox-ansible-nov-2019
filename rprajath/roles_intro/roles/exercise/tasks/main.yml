@@ -1,0 +1,23 @@
+---
+# tasks file for exercise
+  - name: Install apache2 using vars
+    apt: name={{package}} state=present
+#    when: ansible_os_family == "Debian"
+  - template:
+      src: ports.conf.j2
+      dest: /etc/apache2/ports.conf
+    notify:
+    - restart apache
+  - debug:
+      msg: "Port is {{port}}"
+  - shell: "ls"
+    args: 
+      chdir: "/etc"
+    register: store
+  - template:
+      src: index.j2
+      dest: /var/www/html/index.html
+  - name: Create a group
+    group: name=deploy
+  - name: Create a user
+    user: name=deploy-user

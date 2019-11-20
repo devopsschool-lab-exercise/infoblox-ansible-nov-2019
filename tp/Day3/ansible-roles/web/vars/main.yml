@@ -1,0 +1,4 @@
+---
+# vars file for web
+myname: "tp playbook"
+port: 8080

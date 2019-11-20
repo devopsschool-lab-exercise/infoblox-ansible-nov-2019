@@ -625,8 +625,81 @@ Spec -----
 Exercise 
 https://www.devopsschool.com/blog/ansible-playbook-lab-excercise-part-3/
 
+Handlers in Ansible
+============================
+---
+- name: This sets up an httpd webserver
+  hosts: localhost
+  become: yes
+  vars:
+    myname: "rajesh kumar in playbook"
+
+  tasks:
+  - name: Update all packages to the latest version
+    apt: upgrade=dist
+  - name: Install the httpd apps
+    apt: name=apache2 state=present
+  - name: start the httpd service
+    service: name=apache2 state=started
+    notify:
+    - restart apache
+  - name: copy a file
+    copy: dest=/var/www/html/ src="/home/ubuntu/index.html"
+    notify:
+    - restart apache
+
+  handlers:
+    # this particular handler is run when some_random_foo.conf
+    # is changed, and only then
+    - name: restart apache
+      service: name=apache2 state=restarted
 
 
+
+
+  - template:
+      src: port.conf.j2
+      dest: /etc/apache2/port.conf.j2
+
+
+SITE.yaml
+
+---
+- hosts: localhost
+  sudo: yes
+  gather_facts: no
+  roles:
+    - role: web
+
+==============
+How to create skeletan of roles.
+
+$ ansible-galaxy init web
+whereas "web" is name of the role.
+
+========================
+PROJECT
+https://www.devopsschool.com/blog/ansible-role-project-1/
+
+========================
+
+Its a WEB BASED APP
+  --> How to access API - 
+        end point OF api
+              user id AND password
+
+APi RESOURCES - network
+                      get 
+                          paramS 
+                      PUT
+                      post
+                      delete
+                      -----
+                      json & xml
+
+  https://github.com/ansible/ansible/tree/devel/lib/ansible/modules
+  https://github.com/ansible/ansible/tree/devel/lib/ansible/modules/net_tools/nios
+  https://github.com/ansible/ansible/blob/devel/lib/ansible/module_utils/net_tools/nios/api.py
 
 
 
