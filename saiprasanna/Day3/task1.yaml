@@ -1,0 +1,13 @@
+- name: Install appache2
+  hosts: localhost
+  tasks:
+  - name: install apache2
+    apt: name="apache2"
+    when: (ansible_os_family)
+  - name: Listing out the directory
+    shell: "ls"
+    args:
+      chdir: "/etc"
+    register: find_output
+  - debug:
+      var: find_output
