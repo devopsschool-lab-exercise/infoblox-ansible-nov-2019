@@ -1,7 +1,7 @@
 ---
-        - name: Create a group
-          group: name=deploy state=present
-        - name: Create a group user
-          user: name=deploy-user group=deploy state=present
+- name: Create a group
+  group: name=deploy state=present
+- name: Create a group user
+  user: name=deploy-user group=deploy state=present
 
 ...
