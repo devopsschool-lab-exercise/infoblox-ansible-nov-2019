@@ -1,0 +1,18 @@
+---
+  - name: Print OS information
+    hosts: all
+    tasks:
+    - name: Install apache2
+      apt: name=apache2
+      when: ansible_os_family == "Debian"
+    - name: Install httpd
+      apt: name=httpd
+      when: ansible_os_family == "redhat"
+    - shell: "ls"
+      args: 
+        chdir: "/etc"
+      register: files
+    - debug:
+        msg: "Files in /etc are {{files}}"
+      
+...
