@@ -677,6 +677,12 @@ How to create skeletan of roles.
 $ ansible-galaxy init web
 whereas "web" is name of the role.
 
+========================
+PROJECT
+https://www.devopsschool.com/blog/ansible-role-project-1/
+
+========================
+
 Its a WEB BASED APP
   --> How to access API - 
         end point OF api
