@@ -1,0 +1,4 @@
+---
+# defaults file for exercise
+port: 8080
+store: {}
