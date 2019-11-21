@@ -715,5 +715,107 @@ dict
 
 
 Looping at DICT
+================================
+Project - Allocating an ip
 
+pSUCODE -
+-------------------
+s1 - aUTH 
+--------------------
+s1 - Authentication based on parameters
+s2 - Create NetworkView
+
+====
+nview = objects.NetworkView.create(conn, name='my_view')
+--------
+conn - CLIENT CALL 
+
+
+import logging
+logging.basicConfig(level=logging.DEBUG)
+from infoblox_client import connector
+from infoblox_client import objects
+
+opts = {'host': '10.120.20.96', 'username': 'admin', 'password': 'infoblox'}
+
+host
+username 
+password
+================================
+import logging
+logging.basicConfig(level=logging.DEBUG)
+
+# pip install infoblox-client
+from infoblox_client import connector
+from infoblox_client import objects
+
+'host': dict(required=True),
+'username': dict(required=True),
+'password': dict(required=True)
+
+infohost = module.params['host']
+infousername = module.params['username']
+infopassword = module.params['password']
+
+opts = {'host': 'infohost', 'username': 'infousername', 'password': 'infopassword'}
+conn = connector.Connector(opts)
+
+
+
+13.235.73.10
+
+
+
+======
+network = objects.Network.create(conn, network_view='my_view',
+                                 cidr='192.168.1.0/24')
+view = objects.DNSView.create(conn, network_view='my_view',
+                              name='my_dns_view')
+zone = objects.DNSZone.create(conn, view='my_dns_view',
+                              fqdn='my_zone.com')
+my_ip = objects.IP.create(ip='192.168.1.25', mac='aa:bb:cc:11:22:33')
+hr = objects.HostRecord.create(conn , view='my_dns_view',
+                               name='my_host_record.my_zone.com', 
+                               ip=my_ip, update_if_exists=True)
+
+====================================================================
+#!/usr/bin/python
+# pip install infoblox-client
+import json
+import logging
+logging.basicConfig(level=logging.DEBUG)
+from infoblox_client import connector
+from infoblox_client import objects
+
+def main():
+    module = AnsibleModule(
+        argument_spec=dict(
+        	host=dict(required=True),
+            username=dict(required=True),
+            password=dict(required=True)
+        ),
+    )
+
+    infohost = module.params['host']
+    infousername = module.params['username']
+    infopassword = module.params['password']
+
+    opts = {'host': infohost, 'username': infousername, 'password': infopassword}
+    conn = connector.Connector(opts)
+
+    #curl_result_dict = json.loads(conn[1])
+    #http_resp_code = curl_result_dict['cod']
+
+    module.exit_json(changed=True, decision='Run, YOU ARE LOGGED IN)
     
+from ansible.module_utils.basic import *
+main()
+
+
+
+---
+- hosts: localhost
+  connection: localhost
+  gather_facts: False
+  tasks:
+  - info_module: host=infoblog.com username=admin password=password
