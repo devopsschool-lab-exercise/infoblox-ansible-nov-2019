@@ -1,0 +1,30 @@
+import logging
+logging.basicConfig(level=logging.DEBUG)
+
+from infoblox_client import connector
+from infoblox_client import objects
+opts = {'host': '10.120.20.96', 'username': 'admin', 'password': 'infoblox'}
+conn = connector.Connector(opts)
+
+# network_views = conn.get_object('networkview')
+
+# search network by cidr in specific network view
+# network = conn.get_object('network', {'network': '100.0.0.0/8', 'network_view': 'default'})
+nview = objects.NetworkView.create(conn, name='my_view')
+network = objects.Network.create(conn, network_view='my_view',
+                                 cidr='192.168.1.0/24')
+view = objects.DNSView.create(conn, network_view='my_view',
+                              name='my_dns_view')
+zone = objects.DNSZone.create(conn, view='my_dns_view',
+                              fqdn='my_zone.com')
+my_ip = objects.IP.create(ip='192.168.1.25', mac='aa:bb:cc:11:22:33')
+hr = objects.HostRecord.create(conn , view='my_dns_view',
+                               name='my_host_record.my_zone.com', 
+                               ip=my_ip, update_if_exists=True)
+'''mx = objects.MXRecord.create(conn, name='mx1.demo.my_zone.com',
+                             mail_exchanger='demo.my_zone.com',
+                             view='my_dns_view', preference=1)
+#mx.name='mx4.demo.my_zone.com'
+#mx.update()
+mx.delete()
+# mx = objects.CNAMERecord.create(conn, name='cnametest.demo.my_zone.com',canonical='demo.my_zone.com',view='my_dns_view')'''
