@@ -3,7 +3,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 from infoblox_client import connector
 from infoblox_client import objects
-opts = {'host': '10.120.20.96', 'username': 'admin', 'password': 'infoblox'}
+opts = {'host': 'IP', 'username': 'Username', 'password': 'Password'}
 conn = connector.Connector(opts)
 
 # network_views = conn.get_object('networkview')
