@@ -1,0 +1,7 @@
+---
+- name: Infoblox Module
+  hosts: localhost
+  gather_facts:
+  tasks:
+  - test : host=172.29.128.x username=admin password=infoblox
+...
