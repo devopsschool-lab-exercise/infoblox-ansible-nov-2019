@@ -819,3 +819,98 @@ main()
   gather_facts: False
   tasks:
   - info_module: host=infoblog.com username=admin password=password
+  ========================================================================
+
+#!/bin/bash
+# import variables from ansible
+source $1
+state=${state:-present}
+if [[ $state == "present" ]]; then
+IP=$(curl https://jsonplaceholder.typicode.com/todos/1)
+	if [ ! -e $file ]; then
+		touch $IP >> $file
+		echo { \"changed\": true }
+		exit 0
+	else
+		echo { \"changed\": false }
+		exit 0
+	fi
+fi
+
+if [[ $state == "absent" ]]; then
+IP=$(curl https://jsonplaceholder.typicode.com/todos/1)
+	if [ -e $file ]; then
+		rm $file
+		echo { \"changed\": true }
+		exit 0
+	else
+		echo { \"changed\": false}
+		exit 0
+	fi
+fi
+
+
+echo "$IP"
+sed "s/IP/$IP/" nsupdate.txt | nsupdate
+
+
+
+IP=$(curl https://jsonplaceholder.typicode.com/todos/1)
+
+============================================================
+===================LINUX==============================================
+#touch.bash
+
+#!/bin/bash
+# import variables from ansible
+source $1
+state=${state:-present}
+if [[ $state == "present" ]]; then
+	if [ ! -e $file ]; then
+		touch $file
+		echo { \"changed\": true }
+		exit 0
+	else
+		echo { \"changed\": false }
+		exit 0
+	fi
+fi
+
+if [[ $state == "absent" ]]; then
+	if [ -e $file ]; then
+		rm $file
+		echo { \"changed\": true }
+		exit 0
+	else
+		echo { \"changed\": false}
+		exit 0
+	fi
+fi
+
+===================LINUX==============================================
+# test.yaml
+
+---
+- hosts: localhost
+  connection: local
+  gather_facts: False
+  tasks:
+  - name: touch without state
+    touch:
+      file: ./me.txt
+    register: touch_out
+  - debug:
+      var: touch_out
+  - name: touchw with state (after create)
+    touch:
+       file: ./me.txt
+       state: present
+  - name: touch with absent
+    touch:
+       file: ./me.txt
+       state: absent
+  - name: touch absent with no file
+    touch:
+      file: ./me.txt
+      state: absent
+
