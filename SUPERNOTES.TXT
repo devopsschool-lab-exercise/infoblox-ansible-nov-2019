@@ -1004,3 +1004,13 @@ Step 2  - Modify inventory
             Password of Rabbit
             Password of postgress
 Step 3  - RUN IT 
+========================================================
+Step 1  - Create a org          - DONE
+Step 2 - --------- Create a credentials
+Step 3 - --------- Create a inventory
+Step 4 - --------- Create a Project( AKA Playbook) 
+Step 5 - --------- Craete a Template (AKA ansible-playbook -i dffdsfdsfsdsd) 
+Step 6 - RUN IT OR SCHEDULE IT
+
+
+ansible-hello-world-2.9-ubuntu
