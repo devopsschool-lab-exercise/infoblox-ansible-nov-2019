@@ -1014,3 +1014,5 @@ Step 6 - RUN IT OR SCHEDULE IT
 
 
 ansible-hello-world-2.9-ubuntu
+
+Sample - https://github.com/devopsschool-sample-projects/ansible-hello-world-2.9
