@@ -960,3 +960,47 @@ ansible_password=TD4QhoL3h-9XrgS??!gzpbIYO*eTPY).
 ansible_connection=winrm
 ansible_winrm_transport=basic
 ansible_winrm_server_cert_validation=ignore
+=========================================
+sudo apt-get install python-dev libkrb5-dev krb5-user
+pip install pywinrm[kerberos]
+
+=====================================================
+ DYNAMIC INVENTORY
+=====================================================
+Problems with Ansible.
+=================================
+- Sharing a Deployment Status with TEAM
+    - GUI
+- Role Based Access Control
+    ROLE - ADMIN - USER - QA - Dev
+- LDAP - ACTIVE Control
+- Notification
+- Auto Scheduling
+- ORGANIZATION MGMT
+- Securing your Credential
+-  BETTER lOG MGMT TOOL
+- 
+==================================================\
+
+              ANSIBLE TOWER
+                    PAID
+                    10 LIC IS FREE
+                    ----
+                    nGINX
+                    Rabbit MQ
+                    POSTGRESS
+
+
+            =========
+            RHEL + UB
+
+
+https://15.206.146.123/
+admin
+admin123
+
+Step 1  - Download a Package
+Step 2  - Modify inventory
+            Password of Rabbit
+            Password of postgress
+Step 3  - RUN IT 
