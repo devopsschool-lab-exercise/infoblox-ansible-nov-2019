@@ -913,4 +913,50 @@ fi
     touch:
       file: ./me.txt
       state: absent
+==============================================================
+Ansible with Windows...
+===================================
+ACS --->    ARS 
 
+LINUX       WINDOWS
+                using WINRM(HTTP)
+            WINRM + RUNNING (2016+ Default)
+            POWERSHELL 3.0
+            DOTNET 4.X
+=========================================
+Step 1 - Setup Windows (ARS) with Pre.
+  https://www.devopsschool.com/tutorial/ansible/ansible-windows-remote-setup.html
+Step 2 - ACS WINRM++++ need to be installed and configured.
+      apt install python-pip
+      sudo apt install gcc krb5-kdc krb5-admin-server krb5-config
+      sudo pip install markupsafe
+      sudo pip install xmltodict
+      pip install pywinrm --ignore-installed 
+
+Step 3 - Decide authentication options.
+Step 4 - Enable AUTH In ARS
+Step 5 - create your playbook.
+        https://docs.ansible.com/ansible/latest/modules/list_of_windows_modules.html
+        ansible all -i 15.206.89.232, -m win_ping
+        ansible all -i inventory -m win_ping
+Step 6 - Create a inventory
+Step 7 - RUN IT
+===========================================
+ACS - 13.233.105.156
+ARS - 15.206.89.232
+
+Public DNS	ec2-15-206-89-232.ap-south-1.compute.amazonaws.com
+User name	Administrator
+Password	
+
+
+
+$password = "TD4QhoL3h-9XrgS??!gzpbIYO*eTPY)."
+
+
+[windows:vars]
+ansible_user=Administrator
+ansible_password=TD4QhoL3h-9XrgS??!gzpbIYO*eTPY). 
+ansible_connection=winrm
+ansible_winrm_transport=basic
+ansible_winrm_server_cert_validation=ignore
